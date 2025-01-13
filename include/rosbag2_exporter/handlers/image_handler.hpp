@@ -36,6 +36,13 @@ public:
     }
   }
 
+  // calculate step of image
+  size_t calculate_step(const sensor_msgs::msg::Image & img)
+  {
+    size_t step = img.width * 3;
+    return step;
+  }
+
   // Handle uncompressed image messages
   void process_message(const rclcpp::SerializedMessage & serialized_msg,
                      const std::string & topic,
@@ -46,6 +53,10 @@ public:
       rclcpp::Serialization<sensor_msgs::msg::Image> serializer;
       serializer.deserialize_message(&serialized_msg, &img);
 
+      // If step is empty calculate it naively assuming structure
+      if (img.step == 0) {
+          img.step = calculate_step(img);
+      }
       // Convert the sensor message to a cv::Mat image using cv_bridge
       cv_bridge::CvImagePtr cv_ptr;
       try {
