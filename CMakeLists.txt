@@ -16,8 +16,7 @@ find_package(rosbag2_cpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(std_msgs REQUIRED) 
 find_package(pcl_conversions REQUIRED)
-find_package(pcl_ros REQUIRED)
-find_package(PCL REQUIRED COMPONENTS io)
+find_package(perception_pcl REQUIRED)
 find_package(cv_bridge REQUIRED)
 find_package(OpenCV REQUIRED)
 find_package(yaml-cpp REQUIRED)
@@ -25,6 +24,7 @@ find_package(ament_index_cpp REQUIRED)
 
 
 # Include directories
+find_package(PCL 1.3 REQUIRED COMPONENTS common io)
 include_directories(
   include
   ${PCL_INCLUDE_DIRS}
@@ -46,7 +46,7 @@ ament_target_dependencies(bag_exporter
   sensor_msgs
   std_msgs
   pcl_conversions
-  pcl_ros
+  perception_pcl
   cv_bridge
   OpenCV
   yaml-cpp
