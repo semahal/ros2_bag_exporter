@@ -18,8 +18,8 @@
   <depend>cv_bridge</depend>
   <depend>sensor_msgs</depend>
   <depend>pcl_conversions</depend>
-  <depend>pcl_io</depend>
-  <depend>opencv</depend>
+  <depend>perception_pcl</depend>
+  <depend>libopencv-dev</depend>
   <depend>ament_index_cpp</depend>
 
 
